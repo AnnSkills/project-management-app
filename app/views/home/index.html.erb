@@ -1,0 +1,7 @@
+<h1>Home of project management application</h1>
+<p>Let's go</p>
+<% if user_signed_in? %>
+  <li><%= link_to 'Sign Out', destroy_user_session_path, class: "dropdown-item", data: { turbo_method: :delete } %></li>
+<% else %>
+  <li><%= link_to 'Sign In', new_user_session_path, class: "dropdown-item" %></li>
+<% end %>
