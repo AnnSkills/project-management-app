@@ -74,3 +74,4 @@ gem 'cssbundling-rails'
 gem 'devise'
 # gem 'mailcatcher'
 gem "acts_as_tenant", "~> 0.5.2"
+gem 'stripe'
