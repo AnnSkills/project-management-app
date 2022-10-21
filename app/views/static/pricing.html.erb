@@ -19,14 +19,19 @@
         class="px-3 py-4 bg-indigo-600 block w-full text-center rounded font-bold text-white shadow-sm">
         <%= link_to "Subscribe for $90/yr", new_user_session_path, class: "px-3 py-4 bg-indigo-600 no-underline block w-full text-center rounded font-bold  text-black shadow-sm" %>
       </button>
+      <button
+        class="px-3 py-4 bg-teal-600 block w-full text-center rounded font-bold text-white shadow-sm">
+        <%= link_to "User projects", projects_path, class: "px-3 py-4 bg-teal-600 block no-underline w-full text-center rounded font-bold text-black shadow-sm" %>
+      </button>
     <% end %>
   </div>
 </div>
 <% if user_signed_in? %>
 <% @pricing = Stripe::Price.list( {limit: 3}) %>
   <% @pricing.each do |price| %>
-  <!--  Product: <%#= price.product.name %><br>-->
+    Product id: <%= price.product%><br>
     <%= price.id %><br>
+    <%= price %><br>
     <%= price.unit_amount %>
     <%= price.currency %>
     /<%= price.recurring.interval %>

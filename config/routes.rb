@@ -8,9 +8,6 @@ Rails.application.routes.draw do
     registrations: 'users/registrations',
     sessions: 'users/sessions'
   }
-  resources :projects
-
-
   scope controller: :static do
     get :pricing
   end
