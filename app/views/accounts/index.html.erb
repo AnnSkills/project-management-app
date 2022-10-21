@@ -1,0 +1,20 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Accounts List for admins of current organisation</h1>
+<%= ActsAsTenant.current_tenant.as_json %>
+<div id="accounts">
+  <% @accounts.each do |account| %>
+    <p>
+      <strong>Name of organisation:</strong>
+      <%= account.name %>
+    </p>
+
+    <% if user_signed_in? && current_user.admin? %>
+    <p>
+      <%= link_to "Show this account", account %>
+    </p>
+    <% end %>
+  <% end %>
+</div>
+
+<%= link_to "New organisation",  new_account_path %>

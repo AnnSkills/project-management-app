@@ -7,29 +7,70 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">
-            <%= link_to 'Home', root_path%>
+          <a >
+            <%= link_to 'Home', root_path, class: "px-3 py-4 bg-teal-600 block no-underline w-full text-center rounded font-bold text-white shadow-sm"%>
           </a>
-
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Link</a>
+          <a class="nav-link">
+            Projects</a>
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Dropdown
+            For user
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li><a class="dropdown-item" href="#">Action</a></li>
+            <% if user_signed_in? %>
+            <li><a class="dropdown-item" href="#">
+              <%= link_to "User projects", projects_path, class: "px-3 py-4 bg-teal-600 block no-underline w-full text-center rounded font-bold text-black shadow-sm" %>
+              </a></li>
+              <% end %>
             <li><a class="dropdown-item" href="#">Another action</a></li>
             <li><hr class="dropdown-divider"></li>
             <li><a class="dropdown-item" href="#">Something else here</a></li>
           </ul>
+
+
         </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            For admin
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+
+              <li class="nav-item">
+                <% if user_signed_in? && current_user.admin?%>
+                <a class="dropdown-item"  href="#" tabindex="-1" >
+                  <%= link_to 'Organisations', accounts_path, class: "px-3 py-4 bg-teal-600 block no-underline w-full text-center rounded font-bold text-black shadow-sm" %>
+                  </a>
+                <% end %>
+              </li>
+
+            <li class="nav-item">
+              <% if user_signed_in? && current_user.admin?%>
+                <a class="dropdown-item" tabindex="-1" >
+                  <%= link_to 'Create Organisation', new_account_path, class: "px-3 py-4 bg-teal-600 block no-underline w-full text-center rounded font-bold text-black shadow-sm" %>
+                </a>
+              <% end %>
+            </li>
+
+
+
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="#">Something else here</a></li>
+          </ul>
+        </li>
+
         <li class="nav-item">
-          <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+          <a class="nav-link">
+            <%# ActsAsTenant.current_tenant = current_user.account.id %>
+            <% if user_signed_in? %>
+               Current organisation: <%= ActsAsTenant.current_tenant %>
+            <% end %>
+          </a>
         </li>
-      </ul>
+
+  </ul>
       <form class="d-flex">
         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
         <button class="btn btn-outline-success" type="submit">Search</button>

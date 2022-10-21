@@ -9,24 +9,28 @@ class ProjectsController < ApplicationController
 
   # GET /projects/1 or /projects/1.json
   def show
+    ActsAsTenant.current_tenant = User.find_by(id: current_user.id)
+    @projects = Project.all
   end
 
   # GET /projects/new
   def new
-    @project = current_user.projects.build
-    @accounts = Account.params[:current_user.account_id]
+    @project = Project.new
+    #@project = Project.new(user_id: current_user.id, account_id: current_user.account.id)
+    #@project = current_user.projects.build
+    #@accounts = Account.params[:current_user.account_id]
   end
 
   # GET /projects/1/edit
   def edit
-    @accounts = current_user.accounts
+    #@accounts = current_user.accounts
   end
 
   # POST /projects or /projects.json
   def create
-    @project =  current_user.projects.build(project_params)
-    #   @project = Project.new(project_params)
-
+    @project = Project.new(project_params)
+    @project.users_id = current_user.id
+    @project.account_id = current_user.account.id
     respond_to do |format|
       if @project.save
         format.html { redirect_to project_url(@project), notice: "Project was successfully created." }
