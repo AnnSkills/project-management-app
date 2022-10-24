@@ -65,7 +65,7 @@
           <a class="nav-link">
             <%# ActsAsTenant.current_tenant = current_user.account.id %>
             <% if user_signed_in? %>
-               Current organisation: <%= ActsAsTenant.current_tenant %>
+               Current organisation: <%= ActsAsTenant.current_tenant%>
             <% end %>
           </a>
         </li>
