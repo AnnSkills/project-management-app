@@ -3,11 +3,17 @@ Rails.application.routes.draw do
   get 'accounts/new'
   resources :projects, :accounts
 
+  # root 'accounts#organisation'
   root "home#index"
   devise_for :users, controllers: {
     registrations: 'users/registrations',
-    sessions: 'users/sessions'
+     sessions: 'users/sessions',
+    # controllers: {
+    #   sessions: 'users/sessions'
+    # }
   }
+
+
   scope controller: :static do
     get :pricing
   end

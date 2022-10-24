@@ -9,7 +9,7 @@ class ProjectsController < ApplicationController
 
   # GET /projects/1 or /projects/1.json
   def show
-    ActsAsTenant.current_tenant = User.find_by(id: current_user.id)
+    ActsAsTenant.current_tenant = User.find_by(id: current_user.id)  #ACCOUNT!!!!!!!
     @projects = Project.all
   end
 

@@ -3,9 +3,10 @@ class AccountsController < ApplicationController
   before_action :authenticate_user!, only: [:edit, :update, :destroy]
 
   def index
-    if user_signed_in?
-      @accounts = Account.all
-    end
+    @accounts = Account.all
+    # if user_signed_in?
+    #   @accounts = Account.all
+    # end
   end
   def create
     @account = Account.new(account_params)
@@ -26,7 +27,7 @@ class AccountsController < ApplicationController
   end
 
   def show
-
+    @accounts = Account.all
   end
 
   def new

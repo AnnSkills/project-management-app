@@ -1,7 +1,6 @@
 class HomeController < ApplicationController
   def index
-    if user_signed_in?
-       ActsAsTenant.current_tenant = current_user.account.id
+    #ActsAsTenant.current_tenant = current_user.account.id
        # Account.where('id = ?', current_user.account_id)
         #Account.find_by(id: current_user.account_id)
       #  User.find_by(id: current_user.id)
@@ -11,6 +10,6 @@ class HomeController < ApplicationController
         #Account.find_by(id: current_user.account_id)
        #@projects = Project.where('account_ids = ?',  current_user.account.id)
       #@projects = Project.params[:current_user.account_id]
-    end
+       # end
   end
 end

@@ -1,0 +1,22 @@
+<h1>Organisations to enter</h1>
+<%= ActsAsTenant.current_tenant.as_json %>
+<%= @accounts = Account.all %>
+<div id="accounts">
+  <% @accounts.each do |account| %>
+    <p>
+      <strong>Name of organisation:</strong>
+      <%= account.name %>
+      <% set_current_account(account.id) %>
+      <% ActsAsTenant.current_tenant = account.id %>
+      <%= link_to 'org account', new_user_session_path(account.id ) %>
+    </p>
+
+    <% if user_signed_in? && current_user.admin? %>
+      <p>
+        <%= link_to "Show this account", account %>
+      </p>
+    <% end %>
+  <% end %>
+</div>
+
+<%= link_to "New organisation",  new_account_path %>
