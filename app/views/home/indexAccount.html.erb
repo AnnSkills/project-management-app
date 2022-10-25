@@ -1,0 +1,26 @@
+<header class="bg-dark py-5">
+  <div class="container px-5">
+    <div class="row gx-5 align-items-center justify-content-center">
+      <div class="col-lg-8 col-xl-7 col-xxl-6">
+        <div class="my-5 text-center text-xl-start">
+          <h1 class="display-5 fw-bolder text-white mb-2">PM App</h1>
+          <div class="d-grid gap-3 d-sm-flex justify-content-sm-center justify-content-xl-start">
+            <% if !account_signed_in? %>
+              <div class="p-3 mb-2 bg-light text-dark px-4 me-sm-3" >
+                <%= link_to 'Sign In', new_account_session_path, class: "dropdown-item" %>
+              </div>
+              <div class="p-3 mb-2 bg-light text-dark px-4 me-sm-3" >
+                <%= link_to 'Sign Up', new_account_registration_path, class: "dropdown-item" %>
+              </div>
+            <% else %>
+              <div class="p-3 mb-2 bg-info text-white px-4 me-sm-3" >
+               <%= link_to 'Sign Out from Organisation', destroy_account_session_path, class: "dropdown-item", method: :delete, 'data-turbo': false %>
+              </div>
+              </div>
+            <% end %>
+            </div>
+      </div>
+      <div class="col-xl-5 col-xxl-6 d-none d-xl-block text-center"><img class="img-fluid rounded-3 my-5" src="https://dummyimage.com/600x400/000/fff&text=Organisations" alt="..." /></div>
+    </div>
+  </div>
+</header>
