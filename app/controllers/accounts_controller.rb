@@ -10,8 +10,6 @@ class AccountsController < ApplicationController
   end
   def create
     @account = Account.new(account_params)
-    #ActsAsTenant.current_tenant = Current.account
-
     @account= current_user.accounts.build(account_params)
     @account.users << current_user
 

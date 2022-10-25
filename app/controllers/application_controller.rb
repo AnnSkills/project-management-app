@@ -1,8 +1,10 @@
 class ApplicationController < ActionController::Base
+  #prepend_before_action :tenant_setting
   set_current_tenant_through_filter
-  before_action :define_current_tenant
-  before_action :configure_permitted_parameters, if: :devise_controller?
+  prepend_before_action :define_current_tenant
+  # before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :authenticate_user!
+
 
 
   private
@@ -13,6 +15,10 @@ class ApplicationController < ActionController::Base
     set_current_tenant(current_account)
     end
   end
+
+  # def tenant_setting
+  #   self.class.set_current_tenant_through_filter
+  # end
 
   protected
 
