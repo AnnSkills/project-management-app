@@ -1,6 +1,7 @@
 class ProjectsController < ApplicationController
   before_action :set_project, only: %i[ show edit update destroy ]
   before_action :authenticate_user!, only: [:edit, :update, :destroy]
+  before_action :set_proj_tenant
 
   # GET /projects or /projects.json
   def index
@@ -9,16 +10,12 @@ class ProjectsController < ApplicationController
 
   # GET /projects/1 or /projects/1.json
   def show
-    ActsAsTenant.current_tenant = User.find_by(id: current_user.id)  #ACCOUNT!!!!!!!
     @projects = Project.all
   end
 
   # GET /projects/new
   def new
     @project = Project.new
-    #@project = Project.new(user_id: current_user.id, account_id: current_user.account.id)
-    #@project = current_user.projects.build
-    #@accounts = Account.params[:current_user.account_id]
   end
 
   # GET /projects/1/edit
@@ -68,12 +65,18 @@ class ProjectsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_project
+      ActsAsTenant.current_tenant = current_user.account
       @project = Project.find(params[:id])
     end
 
     # Only allow a list of trusted parameters through.
     def project_params
       params.require(:project).permit(:name, :account_id, :user_id)
-      #params.require(:project).permit(:name)
     end
+
+  def set_proj_tenant
+    if user_signed_in?
+      ActsAsTenant.current_tenant = current_user.account
+    end
+  end
 end

@@ -5,15 +5,16 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-2">
         <li class="nav-item">
           <a >
             <%= link_to 'Home', root_path, class: "px-3 py-4 bg-teal-600 block no-underline w-full text-center rounded font-bold text-white shadow-sm"%>
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link">
-            Projects</a>
+          <a >
+            <%= link_to 'Projects', projects_path, class: "px-2 py-2 bg-teal-600 block no-underline text-center rounded font-bold text-white" %>
+          </a>
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -65,7 +66,8 @@
           <a class="nav-link">
             <%# ActsAsTenant.current_tenant = current_user.account.id %>
             <% if user_signed_in? %>
-               Current organisation: <%= ActsAsTenant.current_tenant%>
+               Current organisation: <%= ActsAsTenant.current_tenant %>
+<!--              .name 4.Integer ??????  Account-->
             <% end %>
           </a>
         </li>

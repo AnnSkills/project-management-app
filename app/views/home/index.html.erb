@@ -1,16 +1,38 @@
-<h1>Home of project management application</h1>
-<p>Let's go</p>
-<% if user_signed_in? %>
-  <li><%= link_to 'Sign Out', destroy_user_session_path, class: "dropdown-item", data: { turbo_method: :delete } %></li>
-<% else %>
-  <li><%= link_to 'Sign In', new_user_session_path, class: "dropdown-item" %></li>
-
-  <li><%= link_to 'Sign Up',   new_user_registration_path, class: "dropdown-item" %></li>
-<% end %>
-
-
-<div><%= link_to "Pricing", pricing_path %></div>
-
-
-<!--<li><%#= link_to 'Sign Out', destroy_user_session_path, class: "dropdown-item", data: { turbo_method: :delete } %></li>-->
-<!--<li><%#= link_to 'Sign In', new_user_session_path, class: "dropdown-item" %></li>-->
+  <% if user_signed_in? %>
+    <a href="#" class="list-group-item list-group-item-action">
+      <%= link_to 'Sign Out', destroy_user_session_path, class: "dropdown-item", data: { turbo_method: :delete } %>
+    </a>
+  <% else %>
+    <a href="#" class="list-group-item list-group-item-action">
+     <%= link_to 'Sign In', new_user_session_path, class: "dropdown-item" %>
+    </a>
+    <a href="#" class="list-group-item list-group-item-action">
+     <%= link_to 'Sign Up', new_user_registration_path, class: "dropdown-item" %>
+    </a>
+  <% end %>
+  <a href="#" class="list-group-item list-group-item-action">
+    <div><%= link_to "Pricing", pricing_path %></div>
+  </a>
+</div>
+<!--<header class="bg-dark py-5">-->
+<!--  <div class="container px-5">-->
+<!--    <div class="row gx-5 align-items-center justify-content-center">-->
+<!--      <div class="col-lg-8 col-xl-7 col-xxl-6">-->
+<!--        <div class="my-5 text-center text-xl-start">-->
+<!--          <h1 class="display-5 fw-bolder text-white mb-2">PM App</h1>-->
+<!--          <div class="d-grid gap-3 d-sm-flex justify-content-sm-center justify-content-xl-start">-->
+            <%# if !user_signed_in? %>
+<!--            <a class="btn btn-primary btn-lg px-4 me-sm-3" href="#features">-->
+              <%#= link_to 'Sign In', new_user_session_path, class: "dropdown-item" %>
+<!--            </a>-->
+<!--            <a class="btn btn-outline-light btn-lg px-4" href="#!">Learn More</a>-->
+<!--            <a class="btn btn-primary btn-lg px-4 me-sm-3" href="#features">-->
+              <%#= link_to 'Sign Up', new_user_registration_path, class: "dropdown-item" %>
+<!--            </a>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--      <div class="col-xl-5 col-xxl-6 d-none d-xl-block text-center"><img class="img-fluid rounded-3 my-5" src="https://dummyimage.com/600x400/ffffff/000000&text=project+management" alt="..." /></div>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--</header>-->

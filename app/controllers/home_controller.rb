@@ -1,6 +1,9 @@
 class HomeController < ApplicationController
   def index
-    #ActsAsTenant.current_tenant = current_user.account.id
+    if user_signed_in?
+      ActsAsTenant.current_tenant = current_user.account.id
+    end
+
        # Account.where('id = ?', current_user.account_id)
         #Account.find_by(id: current_user.account_id)
       #  User.find_by(id: current_user.id)
