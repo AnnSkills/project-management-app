@@ -5,6 +5,6 @@ class TenantfixController < Devise::SessionsController
     # return unless current_user.present?
     # current_account = current_user.account
     current_account = Account.find(params[:account_id])
-    ActsAsTenant.current_tenant = current_account.id
+    ActsAsTenant.current_tenant = current_account
   end
 end

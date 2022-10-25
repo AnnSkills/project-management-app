@@ -1,6 +1,6 @@
 class AccountsController < ApplicationController
-  before_action :set_account, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_user!, only: [:edit, :update, :destroy]
+  # before_action :set_account, only: [:show, :edit, :update, :destroy]
+  #before_action :authenticate_user!, only: [:edit, :update, :destroy]
 
   def index
     @accounts = Account.all
@@ -43,9 +43,9 @@ class AccountsController < ApplicationController
 
   private
 
-  def set_account
-    @account = Account.find(params[:id])
-  end
+  # def set_account
+  #   @account = Account.find(params[:id])
+  # end
 
   def account_params
     params.require(:account).permit(:id, users_attributes: [:id, :name, :email])

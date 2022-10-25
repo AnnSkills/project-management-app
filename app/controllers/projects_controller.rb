@@ -25,9 +25,11 @@ class ProjectsController < ApplicationController
 
   # POST /projects or /projects.json
   def create
+    ActsAsTenant.with_tenant(current_account) do
+      puts current_account
     @project = Project.new(project_params)
     @project.users_id = current_user.id
-    @project.account_id = current_user.account.id
+    @project.account_id = current_account.id
     respond_to do |format|
       if @project.save
         format.html { redirect_to project_url(@project), notice: "Project was successfully created." }
@@ -36,6 +38,7 @@ class ProjectsController < ApplicationController
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @project.errors, status: :unprocessable_entity }
       end
+    end
     end
   end
 
