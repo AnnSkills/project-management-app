@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root "home#indexAccount"
+  root "home#index"
   resources :projects
   devise_for :accounts, controllers:{
     registrations: 'accounts/registrations',
