@@ -10,7 +10,7 @@ class AccountsController < ApplicationController
   end
   def create
     @account = Account.new(account_params)
-    @account= current_user.accounts.build(account_params)
+    @account = current_user.accounts.build(account_params)
     @account.users << current_user
 
     respond_to do |format|
@@ -36,7 +36,7 @@ class AccountsController < ApplicationController
   def destroy
     @account.destroy
     respond_to do |format|
-      format.html { redirect_to teams_url, notice: 'Organisation was successfully destroyed.' }
+      format.html { redirect_to account_session_url, notice: 'Organisation was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

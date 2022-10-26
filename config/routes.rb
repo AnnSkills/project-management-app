@@ -1,19 +1,14 @@
 Rails.application.routes.draw do
-   get 'accounts/create'
-   get 'accounts/new'
-  resources :projects#, :accounts
-
-  # root 'accounts#organisation'
   root "home#indexAccount"
-   devise_for :accounts, controllers:{
-     registrations: 'accounts/registrations',
-     sessions: 'accounts/sessions',
-   }
+  resources :projects
+  devise_for :accounts, controllers:{
+    registrations: 'accounts/registrations',
+    sessions: 'accounts/sessions',
+  }
   devise_for :users, controllers: {
     registrations: 'users/registrations',
     sessions: 'users/sessions',
   }
-
   scope controller: :static do
     get :pricing
   end
