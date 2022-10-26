@@ -3,8 +3,5 @@ class HomeController < ApplicationController
     if account_signed_in?
       ActsAsTenant.current_tenant = current_account
     end
-    if user_signed_in?
-      ActsAsTenant.current_tenant = current_account
-    end
   end
 end

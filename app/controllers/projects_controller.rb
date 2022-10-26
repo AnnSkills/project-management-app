@@ -26,9 +26,9 @@ class ProjectsController < ApplicationController
   # POST /projects or /projects.json
   def create
     ActsAsTenant.with_tenant(current_account) do
-      puts current_account
+      puts current_account.name
+      puts current_account.user_id
     @project = Project.new(project_params)
-    @project.users_id = current_user.id
     @project.account_id = current_account.id
     respond_to do |format|
       if @project.save
@@ -58,7 +58,6 @@ class ProjectsController < ApplicationController
   # DELETE /projects/1 or /projects/1.json
   def destroy
     @project.destroy
-
     respond_to do |format|
       format.html { redirect_to projects_url, notice: "Project was successfully destroyed." }
       format.json { head :no_content }
@@ -68,18 +67,18 @@ class ProjectsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_project
-      ActsAsTenant.current_tenant = current_user.account
+      #ActsAsTenant.current_tenant = current_account
       @project = Project.find(params[:id])
     end
 
     # Only allow a list of trusted parameters through.
     def project_params
-      params.require(:project).permit(:name, :account_id, :user_id)
+      params.require(:project).permit(:name, :account_id)
     end
 
   def set_proj_tenant
     if user_signed_in?
-      ActsAsTenant.current_tenant = current_user.account
+      ActsAsTenant.current_tenant = current_account
     end
   end
 end

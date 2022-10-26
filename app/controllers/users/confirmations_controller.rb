@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class Users::ConfirmationsController < Devise::ConfirmationsController
+  set_current_tenant_through_filter
   # GET /resource/confirmation/new
   # def new
   #   super

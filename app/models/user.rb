@@ -2,16 +2,16 @@ class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable,
-         :confirmable
-  # has_one :account
+         :recoverable, :rememberable, :validatable
+  #, :confirmable
+  has_one :account
   has_many :projects
   after_create :set_account
   acts_as_tenant(:account)
 
   def set_account
-    #self.build_account
-    self.account_id = current_account
+    self.build_account
+    #self.account_id = current_account
   end
 
   def to_s
@@ -30,7 +30,7 @@ class User < ApplicationRecord
     self.stripe_customer_id = customer.id
   end
   def user_params
-    params.require(:user).permit(:id, :email, :password)
+    params.require(:user).permit(:id, :email, :password, :account_id)
   end
 
 end
