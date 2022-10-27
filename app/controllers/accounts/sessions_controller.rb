@@ -1,5 +1,5 @@
 class Accounts::SessionsController < Devise::SessionsController
-  set_current_tenant_through_filter
+
   skip_before_action :verify_authenticity_token
   # GET /resource/sign_in
   def new
@@ -22,10 +22,5 @@ class Accounts::SessionsController < Devise::SessionsController
     set_flash_message! :notice, :signed_out if signed_out
     yield if block_given?
     respond_to_on_destroy
-  end
-
-  private
-  def user_params
-    params.require(:account).permit(:id, :email, :password)
   end
 end

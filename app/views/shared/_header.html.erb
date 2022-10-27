@@ -56,10 +56,18 @@
               <li class="nav-item">
                 <% if user_signed_in? && current_user.admin?%>
                 <a class="dropdown-item"  href="#" tabindex="-1" >
-                  <%= link_to 'Organisations', accounts_new_path, class: "px-3 py-4 bg-teal-600 block no-underline w-full text-center rounded font-bold text-black shadow-sm" %>
+                  <%= link_to 'Organisations', accounts_path, class: "px-3 py-4 bg-teal-600 block no-underline w-full text-center rounded font-bold text-black shadow-sm" %>
                   </a>
                 <% end %>
               </li>
+
+            <li class="nav-item">
+              <% if user_signed_in? && current_user.admin?%>
+                <a class="dropdown-item" tabindex="-1" >
+                  <%= link_to 'Invite User', new_user_invitation_path, class: "px-3 py-4 bg-teal-600 block no-underline w-full text-center rounded font-bold text-black shadow-sm" %>
+                </a>
+              <% end %>
+            </li>
 
             <li class="nav-item">
               <% if user_signed_in? && current_user.admin?%>
@@ -76,18 +84,17 @@
 
         <li class="nav-item">
           <a class="nav-link">
-            Current organisation: <%= ActsAsTenant.current_tenant %>
+<!--            Current organisation: <%#= ActsAsTenant.current_tenant.name %>-->
             <%# ActsAsTenant.current_tenant = current_user.account.id %>
             <% if user_signed_in? %>
-               Current organisation: <%= ActsAsTenant.current_tenant %>
-<!--              .name 4.Integer ??????  Account-->
+               Current user: <%= current_user %>
             <% end %>
           </a>
         </li>
 
         <li class="nav-item">
           <a class="nav-link">
-            Current user: <%= current_account%>
+<!--            created_by_invite: <%#= current_user.created_by_invite?%>-->
           </a>
         </li>
   </ul>

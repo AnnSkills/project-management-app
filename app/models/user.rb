@@ -2,17 +2,11 @@ class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :invitable, :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable
-  #, :confirmable
-  has_one :account
+         :recoverable, :rememberable, :validatable, :confirmable
+  has_many :accounts
   has_many :projects
-  after_create :set_account
+  has_many :invites, class_name: 'User', foreign_key: :invited_by_id
   acts_as_tenant(:account)
-
-  def set_account
-    self.build_account
-    #self.account_id = current_account
-  end
 
   def to_s
     email
@@ -32,5 +26,4 @@ class User < ApplicationRecord
   def user_params
     params.require(:user).permit(:id, :email, :password, :account_id)
   end
-
 end

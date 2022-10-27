@@ -1,6 +1,13 @@
 class Users::SessionsController < Devise::SessionsController
    set_current_tenant_through_filter
-  skip_before_action :verify_authenticity_token
+   prepend_before_action :set_tenant
+   # skip_before_action :verify_authenticity_token
+   prepend_before_action :require_no_authentication, only: [:new, :create]
+   prepend_before_action :allow_params_authentication!, only: :create
+
+   def set_tenant
+     set_current_tenant(current_account)
+   end
   # GET /resource/sign_in
   def new
     ActsAsTenant.with_tenant(current_account) do
@@ -34,23 +41,4 @@ class Users::SessionsController < Devise::SessionsController
   def user_params
     params.require(:user).permit(:id, :email, :password)
   end
-
-  # private
-  #
-  # def secure_app
-  #   self.class.set_current_tenant_through_filter
-  # end
-
-  # POST /resource/sign_in
-
-
-  # DELETE /resource/sign_out
-
-
-  # protected
-
-  # If you have extra params to permit, append them to the sanitizer.
-  # def configure_sign_in_params
-  #   devise_parameter_sanitizer.permit(:sign_in, keys: [:attribute])
-  # end
 end

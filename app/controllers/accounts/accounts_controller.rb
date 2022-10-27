@@ -1,12 +1,6 @@
 class AccountsController < ApplicationController
-  # before_action :set_account, only: [:show, :edit, :update, :destroy]
-  #before_action :authenticate_user!, only: [:edit, :update, :destroy]
-
   def index
     @accounts = Account.all
-    # if user_signed_in?
-    #   @accounts = Account.all
-    # end
   end
   def create
     @account = Account.new(account_params)

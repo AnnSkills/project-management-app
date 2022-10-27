@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   devise_for :users, controllers: {
     registrations: 'users/registrations',
     sessions: 'users/sessions',
+    invitations: 'users/invitations'
   }
   scope controller: :static do
     get :pricing
@@ -15,4 +16,5 @@ Rails.application.routes.draw do
   post "checkout/create", to: "checkout#create", as: "checkout_create"
   post "billing_portal/create", to: "billing_portal#create", as: "billing_portal_create"
   get "success", to: "checkouts#success"
+  get 'accounts', to: 'accounts#show'
 end
