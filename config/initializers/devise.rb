@@ -134,6 +134,7 @@ Devise.setup do |config|
   # Send a notification email when the user's password is changed.
   # config.send_password_change_notification = false
 
+<<<<<<< HEAD
   # ==> Configuration for :invitable
   # The period the generated invitation token is valid.
   # After this period, the invited resource won't be able to accept the invitation.
@@ -183,6 +184,8 @@ Devise.setup do |config|
   # Default: true
   # config.allow_insecure_sign_in_after_accept = false
 
+=======
+>>>>>>> new
   # ==> Configuration for :confirmable
   # A period that the user is allowed to access the website even without
   # confirming their account. For instance, if set to 2.days, the user will be

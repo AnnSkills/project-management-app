@@ -8,7 +8,11 @@
               <div class="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
 
                 <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">User Login</p>
+<<<<<<< HEAD
                 <%= form_for(resource, as: resource_name, url: session_path(resource_name))  do |f| %>
+=======
+                <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+>>>>>>> new
                   <div class="d-flex flex-row align-items-center mb-4">
                     <i class="fas fa-user fa-lg me-3 fa-fw"></i>
                     <div class="form-outline flex-fill mb-0">
@@ -37,7 +41,11 @@
                   <% end %>
 
                   <div>
+<<<<<<< HEAD
                     <%= f.submit "Log in" %>
+=======
+                    <%= f.submit "Log in", class: "p-3 mb-2 bg-info text-white px-4 me-sm-3", 'data-turbo': false %>
+>>>>>>> new
                   </div>
                 <% end %>
                 <%= render "devise/shared/links" %>
@@ -55,6 +63,7 @@
     </div>
   </div>
 </section>
+<<<<<<< HEAD
 
 <%#= form_with url:'/users/sign_in', method: :post do |f|%>
 <!--  <%#= f.label :email %><br />-->
@@ -63,3 +72,5 @@
   <%#= f.password_field :password, autocomplete: "current-password" %>
   <%#= f.submit "Log in", class: "p-3 mb-2 bg-info text-white px-4 me-sm-3" %>
 <%# end %>
+=======
+>>>>>>> new

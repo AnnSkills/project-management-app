@@ -1,6 +1,12 @@
 class Accounts::SessionsController < Devise::SessionsController
+<<<<<<< HEAD
   skip_before_action :verify_authenticity_token
 
+=======
+  set_current_tenant_through_filter
+  skip_before_action :verify_authenticity_token
+  # GET /resource/sign_in
+>>>>>>> new
   def new
     self.resource = resource_class.new(sign_in_params)
     clean_up_passwords(resource)
@@ -22,4 +28,12 @@ class Accounts::SessionsController < Devise::SessionsController
     yield if block_given?
     respond_to_on_destroy
   end
+<<<<<<< HEAD
+=======
+
+  private
+  def user_params
+    params.require(:account).permit(:id, :email, :password)
+  end
+>>>>>>> new
 end

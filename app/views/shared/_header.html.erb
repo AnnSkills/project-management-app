@@ -38,7 +38,11 @@
               <% end %>
             <li><a class="dropdown-item" href="#">
               <% if user_signed_in?%>
+<<<<<<< HEAD
                 <%= button_to 'Log Out as User', destroy_user_session_path, method: :delete %>
+=======
+                <%= link_to 'Log Out as User', destroy_user_session_path%>
+>>>>>>> new
               <% end %>
             </a></li>
             <li><hr class="dropdown-divider"></li>
@@ -56,7 +60,11 @@
               <li class="nav-item">
                 <% if user_signed_in? && current_user.admin?%>
                 <a class="dropdown-item"  href="#" tabindex="-1" >
+<<<<<<< HEAD
                   <%= link_to 'Organisations', accounts_path, class: "px-3 py-4 bg-teal-600 block no-underline w-full text-center rounded font-bold text-black shadow-sm" %>
+=======
+                  <%= link_to 'Organisations', accounts_new_path, class: "px-3 py-4 bg-teal-600 block no-underline w-full text-center rounded font-bold text-black shadow-sm" %>
+>>>>>>> new
                   </a>
                 <% end %>
               </li>
@@ -64,6 +72,7 @@
             <li class="nav-item">
               <% if user_signed_in? && current_user.admin?%>
                 <a class="dropdown-item" tabindex="-1" >
+<<<<<<< HEAD
                   <%= link_to 'Invite User', new_user_invitation_path, class: "px-3 py-4 bg-teal-600 block no-underline w-full text-center rounded font-bold text-black shadow-sm" %>
                 </a>
               <% end %>
@@ -72,6 +81,8 @@
             <li class="nav-item">
               <% if user_signed_in? && current_user.admin?%>
                 <a class="dropdown-item" tabindex="-1" >
+=======
+>>>>>>> new
                   <%#= link_to 'Create Organisation', new_account_path, class: "px-3 py-4 bg-teal-600 block no-underline w-full text-center rounded font-bold text-black shadow-sm" %>
                 </a>
               <% end %>
@@ -84,6 +95,7 @@
 
         <li class="nav-item">
           <a class="nav-link">
+<<<<<<< HEAD
             <% if user_signed_in? %>
                Current user: <%= current_user %>
             <% end %>
@@ -92,6 +104,20 @@
         <li class="nav-item">
           <a class="nav-link">
             created_by_invite: <%= current_user.created_by_invite?%>
+=======
+            Current organisation: <%= ActsAsTenant.current_tenant %>
+            <%# ActsAsTenant.current_tenant = current_user.account.id %>
+            <% if user_signed_in? %>
+               Current organisation: <%= ActsAsTenant.current_tenant %>
+<!--              .name 4.Integer ??????  Account-->
+            <% end %>
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link">
+            Current user: <%= current_account%>
+>>>>>>> new
           </a>
         </li>
   </ul>

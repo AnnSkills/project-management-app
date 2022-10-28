@@ -1,5 +1,6 @@
 class Users::SessionsController < Devise::SessionsController
    set_current_tenant_through_filter
+<<<<<<< HEAD
    prepend_before_action :set_tenant
    prepend_before_action :require_no_authentication, only: [:new, :create]
    prepend_before_action :allow_params_authentication!, only: :create
@@ -10,6 +11,12 @@ class Users::SessionsController < Devise::SessionsController
 
   def new
     ActsAsTenant.without_tenant do
+=======
+  skip_before_action :verify_authenticity_token
+  # GET /resource/sign_in
+  def new
+    ActsAsTenant.with_tenant(current_account) do
+>>>>>>> new
       self.resource = resource_class.new(sign_in_params)
       clean_up_passwords(resource)
       yield resource if block_given?
@@ -32,6 +39,7 @@ class Users::SessionsController < Devise::SessionsController
       signed_out = (Devise.sign_out_all_scopes ? sign_out : sign_out(resource_name))
       set_flash_message! :notice, :signed_out if signed_out
       yield if block_given?
+<<<<<<< HEAD
 
       respond_to do |format|
         format.html { redirect_to new_user_session_url, notice: ' User Log out OK.' }
@@ -39,4 +47,33 @@ class Users::SessionsController < Devise::SessionsController
       end
     end
   end
+=======
+      respond_to_on_destroy
+    end
+  end
+
+  private
+  def user_params
+    params.require(:user).permit(:id, :email, :password)
+  end
+
+  # private
+  #
+  # def secure_app
+  #   self.class.set_current_tenant_through_filter
+  # end
+
+  # POST /resource/sign_in
+
+
+  # DELETE /resource/sign_out
+
+
+  # protected
+
+  # If you have extra params to permit, append them to the sanitizer.
+  # def configure_sign_in_params
+  #   devise_parameter_sanitizer.permit(:sign_in, keys: [:attribute])
+  # end
+>>>>>>> new
 end

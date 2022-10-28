@@ -1,0 +1,83 @@
+[33mcommit 9c2ee29c4f8a7052481e06ac33f81e9d456fb954[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m)[m
+Author: Anna <khomiakova25@gmail.com>
+Date:   Fri Oct 28 14:49:33 2022 +0300
+
+    docs: move .idea to .gitignore
+
+[33mcommit 66ebe500ba1f6b8bfdf1aaff7e4639408402d9aa[m
+Author: Anna <khomiakova25@gmail.com>
+Date:   Fri Oct 28 12:43:40 2022 +0300
+
+    fixes
+
+[33mcommit 109ff37806b02e9fe897632290d23cb7b338ec2a[m
+Author: Anna <khomiakova25@gmail.com>
+Date:   Thu Oct 27 19:20:21 2022 +0300
+
+    invitations tenant edit
+
+[33mcommit a0511b6b1dced57579b08c0c840abc025bd6011f[m
+Author: Anna <khomiakova25@gmail.com>
+Date:   Wed Oct 26 14:55:53 2022 +0300
+
+    devise_invitable added
+
+[33mcommit 41406ddf238b6b17260e5f826ec190ccfaed800e[m
+Author: Anna <khomiakova25@gmail.com>
+Date:   Wed Oct 26 14:42:11 2022 +0300
+
+    routes fixed
+
+[33mcommit bff95de0b3dd11fbecf47e10271db5a2f84d1f8a[m
+Author: Anna <khomiakova25@gmail.com>
+Date:   Tue Oct 25 18:11:51 2022 +0300
+
+    tenant fix + ui
+
+[33mcommit 3a3f04ea8b80474e25ff3cd0158fdb3de5de56f7[m
+Author: Anna <khomiakova25@gmail.com>
+Date:   Tue Oct 25 13:05:43 2022 +0300
+
+    devise for account
+
+[33mcommit 244dbe58aa8851d62a09c6d754888f39f91ec872[m
+Author: Anna <khomiakova25@gmail.com>
+Date:   Mon Oct 24 17:52:36 2022 +0300
+
+    tenant-devise updates
+
+[33mcommit 6d973bd1ba069af0641d439e28109cfd6ab96555[m
+Author: Anna <khomiakova25@gmail.com>
+Date:   Fri Oct 21 19:05:46 2022 +0300
+
+    payment fixed
+
+[33mcommit b5bd46371748d7f9a76e075d2b3d49ce9acd2ba4[m
+Author: Anna <khomiakova25@gmail.com>
+Date:   Thu Oct 20 18:01:36 2022 +0300
+
+    updates
+
+[33mcommit c56abd638829e773e63be6cedb8108b5020f4e73[m
+Author: Anna <khomiakova25@gmail.com>
+Date:   Tue Oct 18 15:48:00 2022 +0300
+
+    added stripe plan for premium and free trial
+
+[33mcommit da17bf10cb99f6ab6a0f4427df90c7424284f0d2[m
+Author: Anna <khomiakova25@gmail.com>
+Date:   Tue Oct 18 12:49:25 2022 +0300
+
+    tenant config
+
+[33mcommit a616e4546473feb6b0036a450c9e12f76481d729[m
+Author: Anna <khomiakova25@gmail.com>
+Date:   Fri Oct 14 18:27:25 2022 +0300
+
+    device,bootstrap, actsastenant applyed
+
+[33mcommit 034649650db1500feb74b8b3afebec464bed01da[m
+Author: Anna <khomiakova25@gmail.com>
+Date:   Fri Oct 14 13:05:10 2022 +0300
+
+    initial

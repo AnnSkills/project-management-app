@@ -31,7 +31,11 @@
               </div>
             <% else %>
               <div class="p-3 mb-2 bg-info text-white px-4 me-sm-3" >
+<<<<<<< HEAD
                 <%= link_to 'Sign Out', destroy_user_session_path, class: "dropdown-item" %>
+=======
+                <%= link_to 'Sign Out', destroy_user_session_path, class: "dropdown-item", data: { turbo_method: :delete } %>
+>>>>>>> new
               </div>
               <div class="p-3 mb-2 bg-info text-white px-4 me-sm-3">
                <%= link_to "Pricing", pricing_path %>

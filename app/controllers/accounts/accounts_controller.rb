@@ -1,6 +1,17 @@
 class AccountsController < ApplicationController
+<<<<<<< HEAD
   def index
     @accounts = Account.all
+=======
+  # before_action :set_account, only: [:show, :edit, :update, :destroy]
+  #before_action :authenticate_user!, only: [:edit, :update, :destroy]
+
+  def index
+    @accounts = Account.all
+    # if user_signed_in?
+    #   @accounts = Account.all
+    # end
+>>>>>>> new
   end
   def create
     @account = Account.new(account_params)
@@ -37,7 +48,17 @@ class AccountsController < ApplicationController
 
   private
 
+<<<<<<< HEAD
   def account_params
     params.require(:account).permit(:id, users_attributes: [:id, :name, :email])
+=======
+  # def set_account
+  #   @account = Account.find(params[:id])
+  # end
+
+  def account_params
+    params.require(:account).permit(:id, users_attributes: [:id, :name, :email])
+    #params[:account].permit(:id)
+>>>>>>> new
   end
 end
