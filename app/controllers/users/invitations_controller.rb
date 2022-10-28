@@ -1,33 +1,25 @@
 class Users::InvitationsController < Devise::InvitationsController
-  # set_current_tenant_through_filter
   prepend_before_action :set_tenant
 
   def set_tenant
-    byebug
     ActsAsTenant.current_tenant = current_account
-    # set_current_tenant(current_account)
   end
 
   if respond_to? :helper_method
     helper_method :after_sign_in_path_for
   end
 
-  # GET /resource/invitation/new
   def new
-    byebug
     ActsAsTenant.without_tenant do
     self.resource = resource_class.new
     render :new
     end
    end
 
-  # POST /resource/invitation
   def create
     self.resource = invite_resource
     resource_invited = resource.errors.empty?
-
     yield resource if block_given?
-
     if resource_invited
       if is_flashing_format? && self.resource.invitation_sent_at
         set_flash_message :notice, :send_instructions, email: self.resource.email
@@ -42,21 +34,17 @@ class Users::InvitationsController < Devise::InvitationsController
     end
   end
 
-  # GET /resource/invitation/accept?invitation_token=abcdef
   def edit
     set_minimum_password_length
     resource.invitation_token = params[:invitation_token]
     render :edit
   end
 
-  # PUT /resource/invitation
   def update
     raw_invitation_token = update_resource_params[:invitation_token]
     self.resource = accept_resource
     invitation_accepted = resource.errors.empty?
-
     yield resource if block_given?
-
     if invitation_accepted
       if resource.class.allow_insecure_sign_in_after_accept
         flash_message = resource.active_for_authentication? ? :updated : :updated_not_active
@@ -74,7 +62,6 @@ class Users::InvitationsController < Devise::InvitationsController
     end
   end
 
-  # GET /resource/invitation/remove?invitation_token=abcdef
   def destroy
     resource.destroy
     set_flash_message :notice, :invitation_removed if is_flashing_format?

@@ -5,8 +5,6 @@ class SubscriptionsController < ApplicationController
     @project = Project.find(params[:project])
   end
 
-  # Reference:
-  # https://stripe.com/docs/connect/subscriptions
   def create
     @project = Project.find(params[:project])
     key = @project.user.access_code

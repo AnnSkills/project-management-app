@@ -1,7 +1,6 @@
 class Accounts::SessionsController < Devise::SessionsController
-
   skip_before_action :verify_authenticity_token
-  # GET /resource/sign_in
+
   def new
     self.resource = resource_class.new(sign_in_params)
     clean_up_passwords(resource)

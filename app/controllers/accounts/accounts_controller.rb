@@ -37,12 +37,7 @@ class AccountsController < ApplicationController
 
   private
 
-  # def set_account
-  #   @account = Account.find(params[:id])
-  # end
-
   def account_params
     params.require(:account).permit(:id, users_attributes: [:id, :name, :email])
-    #params[:account].permit(:id)
   end
 end

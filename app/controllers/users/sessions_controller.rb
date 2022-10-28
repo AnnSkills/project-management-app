@@ -1,16 +1,15 @@
 class Users::SessionsController < Devise::SessionsController
    set_current_tenant_through_filter
    prepend_before_action :set_tenant
-   # skip_before_action :verify_authenticity_token
    prepend_before_action :require_no_authentication, only: [:new, :create]
    prepend_before_action :allow_params_authentication!, only: :create
 
    def set_tenant
      set_current_tenant(current_account)
    end
-  # GET /resource/sign_in
+
   def new
-    ActsAsTenant.with_tenant(current_account) do
+    ActsAsTenant.without_tenant do
       self.resource = resource_class.new(sign_in_params)
       clean_up_passwords(resource)
       yield resource if block_given?
@@ -33,12 +32,11 @@ class Users::SessionsController < Devise::SessionsController
       signed_out = (Devise.sign_out_all_scopes ? sign_out : sign_out(resource_name))
       set_flash_message! :notice, :signed_out if signed_out
       yield if block_given?
-      respond_to_on_destroy
-    end
-  end
 
-  private
-  def user_params
-    params.require(:user).permit(:id, :email, :password)
+      respond_to do |format|
+        format.html { redirect_to new_user_session_url, notice: ' User Log out OK.' }
+        format.json { head :no_content }
+      end
+    end
   end
 end
