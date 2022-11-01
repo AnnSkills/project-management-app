@@ -74,9 +74,6 @@ gem 'cssbundling-rails'
 gem 'devise'
 # gem 'mailcatcher'
 gem "acts_as_tenant", "~> 0.5.2"
-<<<<<<< HEAD
 gem 'stripe'
 gem 'devise_invitable'
-=======
-gem 'stripe'
->>>>>>> new
+

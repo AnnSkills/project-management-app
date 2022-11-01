@@ -100,12 +100,9 @@ GEM
       railties (>= 4.1.0)
       responders
       warden (~> 1.2.3)
-<<<<<<< HEAD
     devise_invitable (2.0.6)
       actionmailer (>= 5.0)
       devise (>= 4.6)
-=======
->>>>>>> new
     erubi (1.11.0)
     globalid (1.0.0)
       activesupport (>= 5.0)
@@ -237,10 +234,7 @@ DEPENDENCIES
   cssbundling-rails
   debug
   devise
-<<<<<<< HEAD
   devise_invitable
-=======
->>>>>>> new
   importmap-rails
   jbuilder
   pg (~> 1.1)
@@ -250,10 +244,6 @@ DEPENDENCIES
   sprockets-rails
   stimulus-rails
   stripe
-<<<<<<< HEAD
-=======
-  turbo-rails
->>>>>>> new
   tzinfo-data
   web-console
   webdrivers

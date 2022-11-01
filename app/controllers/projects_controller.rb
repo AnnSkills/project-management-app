@@ -3,31 +3,18 @@ class ProjectsController < ApplicationController
   before_action :authenticate_user!, only: [:edit, :update, :destroy]
   before_action :set_proj_tenant
 
-<<<<<<< HEAD
-=======
-  # GET /projects or /projects.json
->>>>>>> new
   def index
     @projects = Project.all
   end
 
-<<<<<<< HEAD
-=======
-  # GET /projects/1 or /projects/1.json
->>>>>>> new
   def show
     @projects = Project.all
   end
 
-<<<<<<< HEAD
-=======
-  # GET /projects/new
->>>>>>> new
   def new
     @project = Project.new
   end
 
-<<<<<<< HEAD
   def edit
   end
 
@@ -47,13 +34,9 @@ class ProjectsController < ApplicationController
     end
   end
 
-=======
-  # GET /projects/1/edit
   def edit
-    #@accounts = current_user.accounts
   end
 
-  # POST /projects or /projects.json
   def create
     ActsAsTenant.with_tenant(current_account) do
       puts current_account.name
@@ -72,8 +55,6 @@ class ProjectsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /projects/1 or /projects/1.json
->>>>>>> new
   def update
     respond_to do |format|
       if @project.update(project_params)
@@ -86,10 +67,6 @@ class ProjectsController < ApplicationController
     end
   end
 
-<<<<<<< HEAD
-=======
-  # DELETE /projects/1 or /projects/1.json
->>>>>>> new
   def destroy
     @project.destroy
     respond_to do |format|
@@ -99,21 +76,17 @@ class ProjectsController < ApplicationController
   end
 
   private
-<<<<<<< HEAD
 
     def set_project
       @project = Project.find(params[:id])
     end
 
-=======
     # Use callbacks to share common setup or constraints between actions.
     def set_project
       #ActsAsTenant.current_tenant = current_account
       @project = Project.find(params[:id])
     end
 
-    # Only allow a list of trusted parameters through.
->>>>>>> new
     def project_params
       params.require(:project).permit(:name, :account_id)
     end

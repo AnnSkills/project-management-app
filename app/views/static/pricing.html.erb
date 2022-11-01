@@ -38,17 +38,3 @@
     <%= button_to "Checkout", checkout_create_path(price: price.id), method: :post, remote: true, data: { turbo: false } %>
   <% end %>
 <% end %>
-
-
-
-<!--<h1>Pricing2</h1>-->
-<%# @pricing = Stripe::Price.list( lookup_keys: ["root_month"], expand: ["data.product"] ) %>
-<%# @pricing.each do |price| %>
-<!--  Product: <%#= price.product.name %><br>-->
-<!--  <%#= price.id %><br>-->
-  <%#= price.unit_amount %>
-  <%#= price.currency %>
-<!--  /<%#= price.recurring.interval %>-->
-  <%#= button_to "Checkout", checkout_create_path(price: price.id), method: :post, remote: true, data: { turbo: false } %>
-<%# end %>
-
