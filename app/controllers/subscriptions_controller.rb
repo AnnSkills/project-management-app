@@ -1,16 +1,8 @@
 class SubscriptionsController < ApplicationController
   before_action :authenticate_user!
 
-  def new
-    @project = Project.find(params[:project])
-  end
-
-  # Reference:
-  # https://stripe.com/docs/connect/subscriptions
   def create
     @project = Project.find(params[:project])
-    key = @project.user.access_code
-    Stripe.api_key = key
 
     plan_id = params[:plan]
     plan = Stripe::Plan.retrieve(plan_id)
@@ -18,7 +10,7 @@ class SubscriptionsController < ApplicationController
 
 
     customer = if current_user.stripe_id?
-                 Stripe::Customer.retrieve(current_user.stripe_id)
+                 Stripe::Customer.retrieve(current_user.stripe_customer_id)
                else
                  Stripe::Customer.create(email: current_user.email, source: token)
                end
@@ -32,7 +24,7 @@ class SubscriptionsController < ApplicationController
                                                  ],
                                                  expand: ["latest_invoice.payment_intent"],
                                                  application_fee_percent: 10,
-                                               }, stripe_acccount: key)
+                                               }, stripe_acccount: current_user.stripe_customer_id)
 
 
     options = {

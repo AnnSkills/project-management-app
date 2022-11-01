@@ -20,25 +20,6 @@ class ProjectsController < ApplicationController
 
   def create
     ActsAsTenant.with_tenant(current_account) do
-      @project = Project.new(project_params)
-      @project.account_id = current_account.id
-      respond_to do |format|
-        if @project.save
-          format.html { redirect_to project_url(@project), notice: "Project was successfully created." }
-          format.json { render :show, status: :created, location: @project }
-        else
-          format.html { render :new, status: :unprocessable_entity }
-          format.json { render json: @project.errors, status: :unprocessable_entity }
-        end
-      end
-    end
-  end
-
-  def edit
-  end
-
-  def create
-    ActsAsTenant.with_tenant(current_account) do
       puts current_account.name
       puts current_account.user_id
     @project = Project.new(project_params)
@@ -76,10 +57,6 @@ class ProjectsController < ApplicationController
   end
 
   private
-
-    def set_project
-      @project = Project.find(params[:id])
-    end
 
     # Use callbacks to share common setup or constraints between actions.
     def set_project
