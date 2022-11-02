@@ -1,7 +1,5 @@
 class HomeController < ApplicationController
   def index
-    if account_signed_in?
-      ActsAsTenant.current_tenant = current_account
-    end
+    TenantSetting.new.define_tenant_for_signed_in
   end
 end

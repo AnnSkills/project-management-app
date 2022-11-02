@@ -6,8 +6,4 @@ class Account < ApplicationRecord
   devise :invitable, :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable,
          :confirmable
-
-  def acc_params
-    params.require(:account).permit(:id, :users_id)
-  end
 end

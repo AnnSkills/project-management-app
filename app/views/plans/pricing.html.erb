@@ -4,13 +4,11 @@
 <% end %>
 <div class="max-w-xl mx-auto p-8 rounded-xl shadow-xl mt-6">
   <div class="h-[200px] bg-gray-100 overflow-hidden mb-6 rounded-lg">
-    <img
-      src="https://source.unsplash.com/random/800x400"
-      class="bg-gray-100 object-cover rounded-lg"
-      />
+    <img src="https://source.unsplash.com/random/800x400" class="bg-gray-100 object-cover rounded-lg"/>
   </div>
   <div class="grid grid-cols-2 gap-6 mt-3 m-lg-5 align-content-center">
     <% if user_signed_in? %>
+      <%= button_to "Checkout", checkout_create_path(price: @pricing.id), method: :post, remote: true, data: { turbo: false } %>
       <button
         class="px-3 py-4 bg-teal-600 block w-full text-center rounded font-bold text-white shadow-sm">
         <%= link_to "Subscribe for $10/mo",'https://buy.stripe.com/test_9AQ29F5GGfWS3969AA', class: "px-3 py-4 bg-teal-600 block no-underline w-full text-center rounded font-bold text-black shadow-sm" %>
@@ -26,15 +24,3 @@
     <% end %>
   </div>
 </div>
-<% if user_signed_in? %>
-<% @pricing = Stripe::Price.list( {limit: 3}) %>
-  <% @pricing.each do |price| %>
-    Product id: <%= price.product%><br>
-    <%= price.id %><br>
-    <%= price %><br>
-    <%= price.unit_amount %>
-    <%= price.currency %>
-    /<%= price.recurring.interval %>
-    <%= button_to "Checkout", checkout_create_path(price: price.id), method: :post, remote: true, data: { turbo: false } %>
-  <% end %>
-<% end %>

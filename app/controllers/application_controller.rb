@@ -1,18 +1,7 @@
 class ApplicationController < ActionController::Base
   set_current_tenant_through_filter
-  prepend_before_action :set_tenant
   before_action :authenticate_account!
-  prepend_before_action :define_current_tenant
-
-  def set_tenant
-    ActsAsTenant.current_tenant = current_account
-  end
-
-  private
-  def define_current_tenant
-    set_current_tenant(current_account)
-    ActsAsTenant.current_tenant = current_account
-  end
+  prepend_before_action :TenantSetting.new.define_tenant_for_signed_in
 
   protected
   def configure_permitted_parameters

@@ -1,7 +1,6 @@
 class ProjectsController < ApplicationController
   before_action :set_project, only: %i[ show edit update destroy ]
   before_action :authenticate_user!, only: [:edit, :update, :destroy]
-  before_action :set_proj_tenant
 
   def index
     @projects = Project.all
@@ -20,8 +19,6 @@ class ProjectsController < ApplicationController
 
   def create
     ActsAsTenant.with_tenant(current_account) do
-      puts current_account.name
-      puts current_account.user_id
     @project = Project.new(project_params)
     @project.account_id = current_account.id
     respond_to do |format|
@@ -58,19 +55,11 @@ class ProjectsController < ApplicationController
 
   private
 
-    # Use callbacks to share common setup or constraints between actions.
     def set_project
-      #ActsAsTenant.current_tenant = current_account
       @project = Project.find(params[:id])
     end
 
     def project_params
       params.require(:project).permit(:name, :account_id)
     end
-
-  def set_proj_tenant
-    if user_signed_in?
-      ActsAsTenant.current_tenant = current_account
-    end
-  end
 end

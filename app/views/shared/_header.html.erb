@@ -45,8 +45,6 @@
             <li><hr class="dropdown-divider"></li>
             <li><a class="dropdown-item" href="#">Something else here</a></li>
           </ul>
-
-
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -70,20 +68,10 @@
                 </a>
               <% end %>
             </li>
-
-            <li class="nav-item">
-              <% if user_signed_in? && current_user.admin?%>
-                <a class="dropdown-item" tabindex="-1" >
-                  <%#= link_to 'Create Organisation', new_account_path, class: "px-3 py-4 bg-teal-600 block no-underline w-full text-center rounded font-bold text-black shadow-sm" %>
-                </a>
-              <% end %>
-            </li>
-
             <li><hr class="dropdown-divider"></li>
             <li><a class="dropdown-item" href="#">Something else here</a></li>
           </ul>
         </li>
-
         <li class="nav-item">
           <a class="nav-link">
             <% if user_signed_in? %>
@@ -95,19 +83,17 @@
           <a class="nav-link">
             created_by_invite: <%= current_user.created_by_invite?%>
             Current organisation: <%= ActsAsTenant.current_tenant %>
-            <%# ActsAsTenant.current_tenant = current_user.account.id %>
             <% if user_signed_in? %>
                Current organisation: <%= ActsAsTenant.current_tenant %>
             <% end %>
           </a>
         </li>
-
         <li class="nav-item">
           <a class="nav-link">
             Current user: <%= current_account%>
           </a>
         </li>
-  </ul>
+     </ul>
       <form class="d-flex">
         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
         <button class="btn btn-outline-success" type="submit">Search</button>

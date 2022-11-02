@@ -10,8 +10,6 @@ class CheckoutController < ApplicationController
                                                     line_items: [
                                                       {price: params[:price], quantity: 1}
                                                     ],
-                                                    # success_url: root_url + "success?session_id={CHECKOUT_SESSION_ID}",
-                                                    cancel_url: pricing_url,
                                                   })
       redirect_to @session.url, allow_other_host: true
     end
