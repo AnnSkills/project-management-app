@@ -9,10 +9,6 @@ class Users::SessionsController < Devise::SessionsController
    end
 
   def new
-    ActsAsTenant.without_tenant do
-  skip_before_action :verify_authenticity_token
-
-  def new
     ActsAsTenant.with_tenant(current_account) do
       self.resource = resource_class.new(sign_in_params)
       clean_up_passwords(resource)
@@ -43,13 +39,9 @@ class Users::SessionsController < Devise::SessionsController
       end
     end
   end
-      respond_to_on_destroy
-    end
-  end
 
   private
   def user_params
     params.require(:user).permit(:id, :email, :password)
   end
-
 end

@@ -1,8 +1,11 @@
 class ApplicationController < ActionController::Base
   set_current_tenant_through_filter
   before_action :authenticate_account!
-  prepend_before_action :TenantSetting.new.define_tenant_for_signed_in
+  prepend_before_action :set_ten
 
+  def set_ten
+    TenantSetting.new.define_tenant_for_signed_in
+  end
   protected
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_up, keys: [:name])

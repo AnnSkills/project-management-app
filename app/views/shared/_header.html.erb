@@ -7,12 +7,12 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-2">
         <li class="nav-item">
-          <a >
+          <a>
             <%= link_to 'Home', root_path, class: "px-3 py-4 bg-teal-600 block no-underline w-full text-center rounded font-bold text-white shadow-sm" %>
           </a>
         </li>
         <li class="nav-item">
-          <a >
+          <a>
             <%= link_to 'Projects', projects_path, class: "px-2 py-2 bg-teal-600 block no-underline text-center rounded font-bold text-white" %>
           </a>
         </li>
@@ -24,7 +24,8 @@
             <% if user_signed_in? %>
             <li><a class="dropdown-item" href="#">
               <%= link_to "User projects", projects_path, class: "px-3 py-4 bg-teal-600 block no-underline w-full text-center rounded font-bold text-black shadow-sm" %>
-              </a></li>
+              </a>
+            </li>
               <% end %>
             <% if account_signed_in?%>
             <li><a class="dropdown-item" href="#">
@@ -56,11 +57,9 @@
                 <% if user_signed_in? && current_user.admin?%>
                 <a class="dropdown-item"  href="#" tabindex="-1" >
                   <%= link_to 'Organisations', accounts_path, class: "px-3 py-4 bg-teal-600 block no-underline w-full text-center rounded font-bold text-black shadow-sm" %>
-                  <%= link_to 'Organisations', accounts_new_path, class: "px-3 py-4 bg-teal-600 block no-underline w-full text-center rounded font-bold text-black shadow-sm" %>
                   </a>
                 <% end %>
               </li>
-
             <li class="nav-item">
               <% if user_signed_in? && current_user.admin?%>
                 <a class="dropdown-item" tabindex="-1" >
@@ -76,15 +75,6 @@
           <a class="nav-link">
             <% if user_signed_in? %>
                Current user: <%= current_user %>
-            <% end %>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link">
-            created_by_invite: <%= current_user.created_by_invite?%>
-            Current organisation: <%= ActsAsTenant.current_tenant %>
-            <% if user_signed_in? %>
-               Current organisation: <%= ActsAsTenant.current_tenant %>
             <% end %>
           </a>
         </li>
