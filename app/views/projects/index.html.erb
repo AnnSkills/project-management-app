@@ -1,5 +1,4 @@
 <p style="color: green"><%= notice %></p>
-
 <h1>Projects</h1>
 <%= ActsAsTenant.current_tenant.as_json %>
 <div id="projects">
@@ -10,5 +9,4 @@
     </p>
   <% end %>
 </div>
-
 <%= link_to "New project", new_project_path %>

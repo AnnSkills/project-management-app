@@ -56,7 +56,7 @@
               <li class="nav-item">
                 <% if user_signed_in? && current_user.admin?%>
                 <a class="dropdown-item"  href="#" tabindex="-1" >
-                  <%= link_to 'Organisations', accounts_path, class: "px-3 py-4 bg-teal-600 block no-underline w-full text-center rounded font-bold text-black shadow-sm" %>
+                  <%#= link_to 'Organisations', account_path, class: "px-3 py-4 bg-teal-600 block no-underline w-full text-center rounded font-bold text-black shadow-sm" %>
                   </a>
                 <% end %>
               </li>
@@ -80,7 +80,7 @@
         </li>
         <li class="nav-item">
           <a class="nav-link">
-            Current user: <%= current_account%>
+            Current user: <%= current_account %>
           </a>
         </li>
      </ul>

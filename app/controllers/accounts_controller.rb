@@ -1,13 +1,12 @@
 class AccountsController < ApplicationController
-
   def index
     @accounts = Account.all
   end
+
   def create
     @account = Account.new(account_params)
     @account = current_user.accounts.build(account_params)
     @account.users << current_user
-
     respond_to do |format|
       if @account.save
         format.html { redirect_to root_path, notice: 'Organisation was successfully created.' }
@@ -19,9 +18,7 @@ class AccountsController < ApplicationController
     end
   end
 
-  def show
-    @accounts = Account.all
-  end
+  def show; end
 
   def new
     @account = current_user.account

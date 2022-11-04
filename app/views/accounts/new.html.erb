@@ -1,5 +1,4 @@
 <h1>Creating of new organisation by admin</h1>
-
 <%= form_with(model: @account) do |form| %>
   <% if @account.errors.any? %>
     <div style="color: red">
@@ -12,13 +11,10 @@
       </ul>
     </div>
   <% end %>
-
   <div>
     <%= form.label 'Organisation Name', style: "display: block" %>
     <%= form.text_field :name %>
   </div>
-
-
   <div class="actions">
     <%= form.submit "Create", data: { turbo: false } %>
   </div>

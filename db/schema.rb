@@ -1,4 +1,3 @@
-ActiveRecord::Schema[7.0].define(version: 2022_10_28_082523) do
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -11,8 +10,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_28_082523) do
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_10_26_081316) do
-
+ActiveRecord::Schema[7.0].define(version: 2022_11_04_140759) do
+  # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "accounts", force: :cascade do |t|
@@ -45,7 +44,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_26_081316) do
     t.index ["invitation_token"], name: "index_accounts_on_invitation_token", unique: true
     t.index ["invited_by_id"], name: "index_accounts_on_invited_by_id"
     t.index ["invited_by_type", "invited_by_id"], name: "index_accounts_on_invited_by"
-    t.index ["email"], name: "index_accounts_on_email", unique: true
     t.index ["reset_password_token"], name: "index_accounts_on_reset_password_token", unique: true
     t.index ["user_id"], name: "index_accounts_on_user_id"
   end
@@ -81,17 +79,24 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_26_081316) do
     t.string "invited_by_type"
     t.bigint "invited_by_id"
     t.integer "invitations_count", default: 0
+    t.string "uid"
+    t.string "provider"
+    t.string "access_code"
+    t.string "publishable_key"
+    t.string "stripe_id"
+    t.boolean "subscribed"
+    t.string "card_last4"
+    t.string "card_exp_month"
+    t.string "card_exp_year"
+    t.string "card_type"
     t.index ["account_id"], name: "index_users_on_account_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["invitation_token"], name: "index_users_on_invitation_token", unique: true
     t.index ["invited_by_id"], name: "index_users_on_invited_by_id"
     t.index ["invited_by_type", "invited_by_id"], name: "index_users_on_invited_by"
-    t.index ["account_id"], name: "index_users_on_account_id"
-    t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
   add_foreign_key "accounts", "users"
   add_foreign_key "users", "accounts"
-end
 end

@@ -1,7 +1,6 @@
 class PricesController < ApplicationController
   def index
-    if user_signed_in?
-      @pricing = Stripe::Price.list( {limit: 3})
-    end
+    @pricing = Stripe::Price.list(limit: 3)
+    render 'plans/pricing'
   end
 end

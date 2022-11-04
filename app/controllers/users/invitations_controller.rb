@@ -5,16 +5,10 @@ class Users::InvitationsController < Devise::InvitationsController
     ActsAsTenant.current_tenant = current_account
   end
 
-  if respond_to? :helper_method
-    helper_method :after_sign_in_path_for
-  end
-
   def new
-    ActsAsTenant.without_tenant do
-    self.resource = resource_class.new
-    render :new
-    end
-   end
+      self.resource = resource_class.new
+      render :new
+  end
 
   def create
     self.resource = invite_resource
