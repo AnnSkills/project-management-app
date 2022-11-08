@@ -4,7 +4,6 @@ class AccountsController < ApplicationController
   end
 
   def create
-    @account = Account.new(account_params)
     @account = current_user.accounts.build(account_params)
     @account.users << current_user
     respond_to do |format|
@@ -26,10 +25,14 @@ class AccountsController < ApplicationController
   end
 
   def destroy
-    @account.destroy
     respond_to do |format|
-      format.html { redirect_to account_session_url, notice: 'Organisation was successfully destroyed.' }
-      format.json { head :no_content }
+      if @account.destroy
+        format.html { redirect_to account_session_url, notice: 'Organisation was successfully destroyed.' }
+        format.json { head :no_content }
+      else
+        format.html { render :'home/index_account'}
+        format.json { render json: @account.errors, status: :unprocessable_entity }
+      end
     end
   end
 
