@@ -8,7 +8,7 @@
   </div>
   <div class="grid grid-cols-2 gap-6 mt-3 m-lg-5 align-content-center">
     <% if user_signed_in? %>
-      <%= button_to "Checkout", pricing_path(price: @pricing), method: :post, remote: true, data: { turbo: false } %>
+      <%= button_to "Checkout", pricing_path(price: @pricings), method: :post, remote: true, data: { turbo: false } %>
       <button
         class="px-3 py-4 bg-teal-600 block w-full text-center rounded font-bold text-white shadow-sm">
         <%= link_to "Subscribe for $10/mo",'https://buy.stripe.com/test_9AQ29F5GGfWS3969AA', class: "px-3 py-4 bg-teal-600 block no-underline w-full text-center rounded font-bold text-black shadow-sm" %>
